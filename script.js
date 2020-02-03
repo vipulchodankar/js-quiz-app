@@ -5,6 +5,7 @@ let questions;
 let numberOfQuestions;
 let currentQuestion = 0;
 let answers;
+let wrongAnswer = false;
 
 // Dom Elements
 let questionNumberDisplay = document.querySelector("#questionNumberDisplay");
@@ -23,6 +24,7 @@ function init() {
 function reset() {
     user.score = 0;
     currentQuestion = 0;
+    wrongAnswer = false;
 
     fetch(API)
         .then((response) => {
@@ -38,11 +40,11 @@ function reset() {
 
 function initButtons() {
     options.forEach((option, index) => option.addEventListener("click", () => {
-        options[0].classList.remove("btn-success");
-        options[1].classList.remove("btn-success");
-        options[2].classList.remove("btn-success");
-        options[3].classList.remove("btn-success");
-        option.classList.add("btn-success");
+        options[0].classList.remove("btn-info");
+        options[1].classList.remove("btn-info");
+        options[2].classList.remove("btn-info");
+        options[3].classList.remove("btn-info");
+        option.classList.add("btn-info");
     }));
 
     passButton.addEventListener("click", () => {
@@ -50,7 +52,10 @@ function initButtons() {
         update();
     });
 
-    resetButton.addEventListener("click", () => reset())
+    resetButton.addEventListener("click", () => reset());
+
+    submitButton.addEventListener("click", () => checkAnswer());
+
 }
 
 function update() {
@@ -72,5 +77,22 @@ function shuffleArray(array) {
 }
 
 function nextQuestion() { if (currentQuestion < numberOfQuestions) currentQuestion++ };
+
+function checkAnswer() {
+    options.forEach((option, index) => {
+        if (option.classList.contains("btn-info") && option.textContent == questions.results[currentQuestion].correct_answer) {
+            user.score++;
+            nextQuestion();
+            update();
+            wrongAnswer = false;
+            
+        } else {
+            wrongAnswer = true;
+        }
+    });
+
+    if(wrongAnswer == true)
+        console.log("WRONG ANSWER!");
+}
 
 init();
