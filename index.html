@@ -30,13 +30,38 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="https://opentdb.com/">Open Trivia DB</a>
+          <a class="nav-item nav-link" href="https://opentdb.com/"
+            >Open Trivia DB</a
+          >
         </div>
       </div>
     </nav>
 
-    <div class="container">
-        lorem ipsum.
+    <div class="container-fluid m-0  ">
+      <div class="row justify-content-center">
+        <div class="col-md-6 p-2 m-2 ">
+          <div class="ml-3 mb-2 d-inline-block">Question #<span id="questionNumberDisplay">6</span></div>
+          <div class="ml-3 mb-2 d-inline-block">Score: <span id="scoreDisplay">9</span></div>
+
+          <div class="text-center">Question: <span id="questionDisplay">lorem ipsum?</span></div>
+
+          <div>
+            <ul id="mcq" class="pl-0">
+              <li class="mcq-options btn btn-secondary d-block m-3">Option 1</li>
+              <li class="mcq-options btn btn-secondary d-block m-3">Option 2</li>
+              <li class="mcq-options btn btn-secondary d-block m-3">Option 3</li>
+              <li class="mcq-options btn btn-secondary d-block m-3">Option 4</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-md-6 m-1 text-center">
+          <button class="btn btn-warning mx-3" id="passButton">Pass</button>
+          <button class="btn btn-primary mx-3" id="submitButton">Submit</button>
+        </div>
+      </div>
     </div>
 
     <script
