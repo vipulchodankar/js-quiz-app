@@ -71,7 +71,7 @@ function initButtons() {
 function update() {
     questionNumberDisplay.textContent = currentQuestion + 1;
     scoreDisplay.textContent = user.score;
-    questionDisplay.textContent = questions.results[currentQuestion].question;
+    questionDisplay.innerHTML = questions.results[currentQuestion].question;
     answers = questions.results[currentQuestion].incorrect_answers;
     answers.push(questions.results[currentQuestion].correct_answer);
     shuffleArray(answers);
@@ -80,7 +80,7 @@ function update() {
     wrongAnswer = true;
     answered = false;
 
-    options.forEach((option, index) => option.textContent = answers[index]);
+    options.forEach((option, index) => option.innerHTML = answers[index]);
 }
 
 function shuffleArray(array) {
