@@ -96,13 +96,14 @@ function checkAnswer() {
     options.forEach((option, index) => {
         if (option.classList.contains("btn-info") && option.textContent == questions.results[currentQuestion].correct_answer) {
             console.log("CORRECT ANSWER!");
+            // option.classList.add("btn-success");
             user.score++;
             wrongAnswer = false;
-            answered = true   
+            answered = true
         }
     });
 
-    if(wrongAnswer == true) {
+    if (wrongAnswer == true) {
         console.log("WRONG ANSWER!");
         options.forEach((option, index) => {
             if (option.textContent == questions.results[currentQuestion].correct_answer) {
@@ -113,8 +114,14 @@ function checkAnswer() {
         nextQuestion();
         update();
     }
-
-    
 }
+
+// function sleep(milliseconds) {
+//     const date = Date.now();
+//     let currentDate = null;
+//     do {
+//         currentDate = Date.now();
+//     } while (currentDate - date < milliseconds);
+// }
 
 init();
