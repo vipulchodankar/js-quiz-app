@@ -41,9 +41,13 @@ function reset() {
 function initButtons() {
     options.forEach((option, index) => option.addEventListener("click", () => {
         options[0].classList.remove("btn-info");
+        options[0].classList.remove("btn-warning");
         options[1].classList.remove("btn-info");
+        options[1].classList.remove("btn-warning");
         options[2].classList.remove("btn-info");
+        options[2].classList.remove("btn-warning");
         options[3].classList.remove("btn-info");
+        options[3].classList.remove("btn-warning");
         option.classList.add("btn-info");
     }));
 
@@ -91,8 +95,15 @@ function checkAnswer() {
         }
     });
 
-    if(wrongAnswer == true)
+    if(wrongAnswer == true) {
         console.log("WRONG ANSWER!");
+        options.forEach((option, index) => {
+            if (option.textContent == questions.results[currentQuestion].correct_answer) {
+                option.classList.add("btn-warning");
+            }
+        });
+    }
+        
 }
 
 init();
