@@ -49,6 +49,8 @@ function initButtons() {
         nextQuestion();
         update();
     });
+
+    resetButton.addEventListener("click", () => reset())
 }
 
 function update() {
