@@ -11,8 +11,14 @@ let questionNumberDisplay = document.querySelector("#questionNumberDisplay");
 let questionDisplay = document.querySelector("#questionDisplay");
 let scoreDisplay = document.querySelector("#scoreDisplay");
 let options = document.querySelectorAll(".mcq-options");
+let resetButton = document.querySelector("#resetButton");
 let passButton = document.querySelector("#passButton");
 let submitButton = document.querySelector("#submitButton");
+
+function init() {
+    initButtons();
+    reset();
+}
 
 function reset() {
     user.score = 0;
@@ -28,6 +34,21 @@ function reset() {
             console.log("Connection with API established.");
             update();
         });
+}
+
+function initButtons() {
+    options.forEach((option, index) => option.addEventListener("click", () => {
+        options[0].classList.remove("btn-success");
+        options[1].classList.remove("btn-success");
+        options[2].classList.remove("btn-success");
+        options[3].classList.remove("btn-success");
+        option.classList.add("btn-success");
+    }));
+
+    passButton.addEventListener("click", () => {
+        nextQuestion();
+        update();
+    });
 }
 
 function update() {
@@ -48,6 +69,6 @@ function shuffleArray(array) {
     }
 }
 
-function nextQuestion() { currentQuestion++ };
+function nextQuestion() { if (currentQuestion < numberOfQuestions) currentQuestion++ };
 
-reset();
+init();
