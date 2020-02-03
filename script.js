@@ -5,7 +5,8 @@ let questions;
 let numberOfQuestions;
 let currentQuestion = 0;
 let answers;
-let wrongAnswer = false;
+let wrongAnswer = true;
+let answered = false;
 
 // Dom Elements
 let questionNumberDisplay = document.querySelector("#questionNumberDisplay");
@@ -25,6 +26,7 @@ function reset() {
     user.score = 0;
     currentQuestion = 0;
     wrongAnswer = false;
+    answered = false;
 
     fetch(API)
         .then((response) => {
@@ -38,16 +40,20 @@ function reset() {
         });
 }
 
+function resetButtons() {
+    options[0].classList.remove("btn-info");
+    options[0].classList.remove("btn-warning");
+    options[1].classList.remove("btn-info");
+    options[1].classList.remove("btn-warning");
+    options[2].classList.remove("btn-info");
+    options[2].classList.remove("btn-warning");
+    options[3].classList.remove("btn-info");
+    options[3].classList.remove("btn-warning");
+}
+
 function initButtons() {
     options.forEach((option, index) => option.addEventListener("click", () => {
-        options[0].classList.remove("btn-info");
-        options[0].classList.remove("btn-warning");
-        options[1].classList.remove("btn-info");
-        options[1].classList.remove("btn-warning");
-        options[2].classList.remove("btn-info");
-        options[2].classList.remove("btn-warning");
-        options[3].classList.remove("btn-info");
-        options[3].classList.remove("btn-warning");
+        resetButtons();
         option.classList.add("btn-info");
     }));
 
@@ -69,6 +75,10 @@ function update() {
     answers = questions.results[currentQuestion].incorrect_answers;
     answers.push(questions.results[currentQuestion].correct_answer);
     shuffleArray(answers);
+    resetButtons();
+
+    wrongAnswer = true;
+    answered = false;
 
     options.forEach((option, index) => option.textContent = answers[index]);
 }
@@ -85,13 +95,10 @@ function nextQuestion() { if (currentQuestion < numberOfQuestions) currentQuesti
 function checkAnswer() {
     options.forEach((option, index) => {
         if (option.classList.contains("btn-info") && option.textContent == questions.results[currentQuestion].correct_answer) {
+            console.log("CORRECT ANSWER!");
             user.score++;
-            nextQuestion();
-            update();
             wrongAnswer = false;
-            
-        } else {
-            wrongAnswer = true;
+            answered = true   
         }
     });
 
@@ -102,8 +109,12 @@ function checkAnswer() {
                 option.classList.add("btn-warning");
             }
         });
+    } else {
+        nextQuestion();
+        update();
     }
-        
+
+    
 }
 
 init();
