@@ -40,11 +40,14 @@
     <div class="container-fluid m-0  ">
       <div class="row justify-content-center">
         <div class="col-md-6 p-2 m-2 ">
-          <div class="ml-3 mb-2 d-inline-block">
-            Question #<span id="questionNumberDisplay">6</span>
-          </div>
-          <div class="ml-3 mb-2 d-inline-block">
-            Score: <span id="scoreDisplay">9</span>
+          <div class="row m-1 mb-4 justify-content-between" id="displayRow">
+            <div class="mx-4 mb-2 d-inline-block">
+              <i class="fas fa-question"></i>
+              <span id="questionNumberDisplay">6</span>
+            </div>
+            <div class="mx-4 mb-2 d-inline-block">
+              <i class="fas fa-star"></i> <span id="scoreDisplay">9</span>
+            </div>
           </div>
 
           <div class="text-center">
@@ -70,11 +73,54 @@
         </div>
       </div>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" id="bottomButtons">
         <div class="col-md-6 m-1 text-center">
-          <button class="btn btn-danger mx-3" id="resetButton">Reset</button>
-          <button class="btn btn-warning mx-3" id="passButton">Pass</button>
-          <button class="btn btn-primary mx-3" id="submitButton">Submit</button>
+          <button class="btn btn-sm btn-danger mx-1 my-1" id="resetButton">
+            <i class="fas fa-recycle"></i> Reset
+          </button>
+          <button class="btn btn-sm btn-warning mx-1 my-1" id="passButton">
+            <i class="fas fa-forward"></i> Pass
+          </button>
+          <button class="btn btn-sm btn-primary mx-1 my-1" id="submitButton">
+            <i class="fas fa-check"></i> Submit
+          </button>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="text-center col-lg-4 mx-4 my-4">
+          <select
+            class="custom-select bg-dark text-white"
+            id="categorySelect"
+            aria-label="Select to choose category."
+          >
+            <option selected>Choose Category</option>
+            <option value="0">Any Category</option>
+            <option value="9">General Knowledge</option>
+            <option value="10">Books</option>
+            <option value="11">Films</option>
+            <option value="12">Music</option>
+            <option value="13">Musicals & Theatres</option>
+            <option value="14">Television</option>
+            <option value="15">Video Games</option>
+            <option value="16">Board Games</option>
+            <option value="17">Science & Nature</option>
+            <option value="18">Computers</option>
+            <option value="19">Mathematics</option>
+            <option value="20">Mythology</option>
+            <option value="21">Sports</option>
+            <option value="22">Geography</option>
+            <option value="23">History</option>
+            <option value="24">Politics</option>
+            <option value="25">Art</option>
+            <option value="26">Celebrities</option>
+            <option value="27">Animals</option>
+            <option value="28">Vehicles</option>
+            <option value="29">Comics</option>
+            <option value="30">Gadgets</option>
+            <option value="31">Anime & Manga</option>
+            <option value="32">Cartoon</option>
+          </select>
         </div>
       </div>
     </div>
@@ -94,13 +140,18 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"
+      integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk="
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-    <script>
+    <!-- <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js");
         });
       }
-    </script>
+    </script> -->
   </body>
 </html>

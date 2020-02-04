@@ -6,7 +6,7 @@ let numberOfQuestions;
 let currentQuestion = 0;
 let answers;
 let wrongAnswer = true;
-let answered = false;
+let answered = 0;
 
 // Dom Elements
 let questionNumberDisplay = document.querySelector("#questionNumberDisplay");
@@ -16,17 +16,23 @@ let options = document.querySelectorAll(".mcq-options");
 let resetButton = document.querySelector("#resetButton");
 let passButton = document.querySelector("#passButton");
 let submitButton = document.querySelector("#submitButton");
+let categorySelect = document.querySelector("#categorySelect");
 
 function init() {
     initButtons();
     reset();
 }
 
+function toggleSubmitButton() {
+    submitButton.classList.toggle("d-none");
+}
+
 function reset() {
     user.score = 0;
     currentQuestion = 0;
     wrongAnswer = false;
-    answered = false;
+    answered = 0;
+    submitButton.classList.remove("d-none");
 
     fetch(API)
         .then((response) => {
@@ -66,6 +72,10 @@ function initButtons() {
 
     submitButton.addEventListener("click", () => checkAnswer());
 
+    categorySelect.addEventListener("change", () => { 
+        console.log("You chose category: " + categorySelect.value); 
+        reset(); 
+    });
 }
 
 function update() {
@@ -77,8 +87,12 @@ function update() {
     shuffleArray(answers);
     resetButtons();
 
+    if (submitButton.classList.contains("d-none")) {
+        submitButton.classList.remove("d-none");
+        passButton.textContent = "Pass";
+    }
+
     wrongAnswer = true;
-    answered = false;
 
     options.forEach((option, index) => option.innerHTML = answers[index]);
 }
@@ -90,38 +104,37 @@ function shuffleArray(array) {
     }
 }
 
-function nextQuestion() { if (currentQuestion < numberOfQuestions) currentQuestion++ };
+function nextQuestion() {
+    if (currentQuestion < numberOfQuestions - 1) { currentQuestion++ } else {
+        alert(`The End!\nYour score: ${user.score}\nYou answered ${answered} questions.\n\nHope you had fun ;)`);
+    }
+};
 
 function checkAnswer() {
     options.forEach((option, index) => {
         if (option.classList.contains("btn-info") && option.textContent == questions.results[currentQuestion].correct_answer) {
             console.log("CORRECT ANSWER!");
-            // option.classList.add("btn-success");
-            user.score++;
+            user.score += 5;
             wrongAnswer = false;
-            answered = true
+            answered++;
         }
     });
 
     if (wrongAnswer == true) {
         console.log("WRONG ANSWER!");
+        toggleSubmitButton();
+        passButton.textContent = "Next";
         options.forEach((option, index) => {
             if (option.textContent == questions.results[currentQuestion].correct_answer) {
                 option.classList.add("btn-warning");
+
             }
         });
+
     } else {
         nextQuestion();
         update();
     }
 }
-
-// function sleep(milliseconds) {
-//     const date = Date.now();
-//     let currentDate = null;
-//     do {
-//         currentDate = Date.now();
-//     } while (currentDate - date < milliseconds);
-// }
 
 init();
