@@ -1,4 +1,4 @@
-let API = "https://opentdb.com/api.php?amount=10&type=multiple";
+let API = "https://opentdb.com/api.php?amount=5&type=multiple";
 
 let user = { score: 0 };
 let questions;
@@ -17,6 +17,8 @@ let resetButton = document.querySelector("#resetButton");
 let passButton = document.querySelector("#passButton");
 let submitButton = document.querySelector("#submitButton");
 let categorySelect = document.querySelector("#categorySelect");
+let numberOfQuestionsInput = document.querySelector("#numberOfQuestionsInput");
+let difficultySelect = document.querySelector("#difficultySelect");
 
 function init() {
     initButtons();
@@ -74,6 +76,20 @@ function initButtons() {
             API = API + `&category=${categorySelect.value}`;
         reset();
     });
+
+    numberOfQuestionsInput.addEventListener("change", () => {
+        console.log(`You chose to answer: + ${numberOfQuestionsInput.value} questions.`);
+        API = API.replace(/amount=(\d?\d)/, `amount=${numberOfQuestionsInput.value}`);
+        reset();
+    });
+
+    difficultySelect.addEventListener("change", () => {
+        console.log("You chose difficulty: " + difficultySelect.value);
+        if (difficultySelect.value == "easy" || difficultySelect.value == "medium" || difficultySelect.value == "hard") {
+            API = API + `&difficulty=${difficultySelect.value}`;
+        }
+        reset();
+    });
 }
 
 function update() {
@@ -107,7 +123,10 @@ function nextQuestion() {
         currentQuestion++;
 
     else {
-        alert(`The End!\nYour score: ${user.score}\nYou answered ${answered} questions.\n\nHope you had fun ;)`);
+        alert(`The End!
+        \nYour score: ${user.score}
+        \nYou answered ${answered} ` + ((difficultySelect.value == "Choose Difficulty" || difficultySelect.value == 0) ? 'mixed' : difficultySelect.value) + ` questions.
+        \nHope you had fun ;)`);
         reset();
     }
 };
