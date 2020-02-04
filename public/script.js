@@ -85,9 +85,9 @@ function initButtons() {
 
     difficultySelect.addEventListener("change", () => {
         console.log("You chose difficulty: " + difficultySelect.value);
-        if (difficultySelect.value == "easy" || difficultySelect.value == "medium" || difficultySelect.value == "hard" ) {
+        if (difficultySelect.value == "easy" || difficultySelect.value == "medium" || difficultySelect.value == "hard") {
             API = API + `&difficulty=${difficultySelect.value}`;
-        }   
+        }
         reset();
     });
 }
@@ -123,7 +123,10 @@ function nextQuestion() {
         currentQuestion++;
 
     else {
-        alert(`The End!\nYour score: ${user.score}\nYou answered ${answered} questions.\n\nHope you had fun ;)`);
+        alert(`The End!
+        \nYour score: ${user.score}
+        \nYou answered ${answered} ` + ((difficultySelect.value == "Choose Difficulty" || difficultySelect.value == 0) ? 'mixed' : difficultySelect.value) + ` questions.
+        \nHope you had fun ;)`);
         reset();
     }
 };
