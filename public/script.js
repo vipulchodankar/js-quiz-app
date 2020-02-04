@@ -1,4 +1,4 @@
-const API = 'https://opentdb.com/api.php?amount=10&type=multiple';
+let API = "https://opentdb.com/api.php?amount=10&type=multiple";
 
 let user = { score: 0 };
 let questions;
@@ -47,14 +47,10 @@ function reset() {
 }
 
 function resetButtons() {
-    options[0].classList.remove("btn-info");
-    options[0].classList.remove("btn-warning");
-    options[1].classList.remove("btn-info");
-    options[1].classList.remove("btn-warning");
-    options[2].classList.remove("btn-info");
-    options[2].classList.remove("btn-warning");
-    options[3].classList.remove("btn-info");
-    options[3].classList.remove("btn-warning");
+    options.forEach(option => {
+        option.classList.remove("btn-info");
+        option.classList.remove("btn-warning");
+    })
 }
 
 function initButtons() {
@@ -72,9 +68,11 @@ function initButtons() {
 
     submitButton.addEventListener("click", () => checkAnswer());
 
-    categorySelect.addEventListener("change", () => { 
-        console.log("You chose category: " + categorySelect.value); 
-        reset(); 
+    categorySelect.addEventListener("change", () => {
+        console.log("You chose category: " + categorySelect.value);
+        if (categorySelect.value >= 9 && categorySelect.value <= 32)
+            API = API + `&category=${categorySelect.value}`;
+        reset();
     });
 }
 
@@ -89,7 +87,7 @@ function update() {
 
     if (submitButton.classList.contains("d-none")) {
         submitButton.classList.remove("d-none");
-        passButton.textContent = "Pass";
+        passButton.innerHTML = `<i class="fas fa-forward"></i> Pass`;
     }
 
     wrongAnswer = true;
@@ -105,8 +103,12 @@ function shuffleArray(array) {
 }
 
 function nextQuestion() {
-    if (currentQuestion < numberOfQuestions - 1) { currentQuestion++ } else {
+    if (currentQuestion < numberOfQuestions - 1)
+        currentQuestion++;
+
+    else {
         alert(`The End!\nYour score: ${user.score}\nYou answered ${answered} questions.\n\nHope you had fun ;)`);
+        reset();
     }
 };
 
@@ -123,11 +125,10 @@ function checkAnswer() {
     if (wrongAnswer == true) {
         console.log("WRONG ANSWER!");
         toggleSubmitButton();
-        passButton.textContent = "Next";
+        passButton.innerHTML = `<i class="fas fa-forward"></i> Next`;
         options.forEach((option, index) => {
             if (option.textContent == questions.results[currentQuestion].correct_answer) {
                 option.classList.add("btn-warning");
-
             }
         });
 
