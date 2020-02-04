@@ -30,7 +30,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="https://opentdb.com/" target="_blank"
+          <a
+            class="nav-item nav-link"
+            href="https://opentdb.com/"
+            target="_blank"
             >Open Trivia DB</a
           >
         </div>
@@ -88,13 +91,13 @@
       </div>
 
       <div class="row justify-content-center">
-        <div class="text-center col-lg-3 mx-4 my-4">
+        <div class="text-center col-md-5 col-lg-3 mx-4 mt-3">
           <select
             class="custom-select bg-dark text-white"
             id="categorySelect"
             aria-label="Select to choose category."
           >
-            <option selected>Choose Category</option>
+            <option selected> Choose Category</option>
             <option value="0">Any Category</option>
             <option value="9">General Knowledge</option>
             <option value="10">Books</option>
@@ -122,6 +125,34 @@
             <option value="32">Cartoon</option>
           </select>
         </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="text-center col-md-5 col-lg-3 mx-4 mt-3">
+          <input
+            type="number"
+            class="input-group form-control bg-dark text-white"
+            name="numberOfQuestions"
+            id="numberOfQuestionsInput"
+            placeholder=" Enter number of questions."
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mx-1">
+      <div class="text-center col-md-5 col-lg-3 mx-4 my-3">
+        <select
+          class="custom-select bg-dark text-white"
+          id="difficultySelect"
+          aria-label="Select to choose difficulty."
+        >
+          <option selected> Choose Difficulty</option>
+          <option value="0">Any Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
     </div>
 
