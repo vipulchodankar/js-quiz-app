@@ -22,11 +22,16 @@ function init() {
     reset();
 }
 
+function toggleSubmitButton() {
+    submitButton.classList.toggle("d-none");
+}
+
 function reset() {
     user.score = 0;
     currentQuestion = 0;
     wrongAnswer = false;
     answered = false;
+    submitButton.classList.remove("d-none");
 
     fetch(API)
         .then((response) => {
@@ -77,6 +82,11 @@ function update() {
     shuffleArray(answers);
     resetButtons();
 
+    if (submitButton.classList.contains("d-none")) {
+        submitButton.classList.remove("d-none");
+        passButton.textContent = "Pass";
+    }
+
     wrongAnswer = true;
     answered = false;
 
@@ -96,7 +106,6 @@ function checkAnswer() {
     options.forEach((option, index) => {
         if (option.classList.contains("btn-info") && option.textContent == questions.results[currentQuestion].correct_answer) {
             console.log("CORRECT ANSWER!");
-            // option.classList.add("btn-success");
             user.score++;
             wrongAnswer = false;
             answered = true
@@ -105,11 +114,15 @@ function checkAnswer() {
 
     if (wrongAnswer == true) {
         console.log("WRONG ANSWER!");
+        toggleSubmitButton();
+        passButton.textContent = "Next";
         options.forEach((option, index) => {
             if (option.textContent == questions.results[currentQuestion].correct_answer) {
                 option.classList.add("btn-warning");
+                
             }
         });
+        
     } else {
         nextQuestion();
         update();
