@@ -125,7 +125,7 @@ function nextQuestion() {
     else {
         alert(`The End!
         \nYour score: ${user.score}
-        \nYou answered ${answered} ` + ((difficultySelect.value == "Choose Difficulty" || difficultySelect.value == 0) ? 'mixed' : difficultySelect.value) + ` questions.
+        \nYou answered ${answered} ` + ((difficultySelect.value == "Choose Difficulty (Default: Any)" || difficultySelect.value == 0) ? 'mixed' : difficultySelect.value) + ` questions.
         \nHope you had fun ;)`);
         reset();
     }
