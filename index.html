@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="shortcut icon"
+      href="img/icons/icon-72x72.png"
+      type="image/png"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="description" content="A quiz app made with JavaScript." />
+    <meta name="keywords" content="quiz,app,JavaScript" />
+
+    <!-- IOS -->
+    <meta name="apple-mobile-web-app-title" content="Quiz!" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link
+      href="img/icons/icon-152x152.png"
+      rel="apple-touch-icon"
+      sizes="152x152"
+    />
+
     <title>JS Quiz App</title>
+
+    <!-- Stylesheets -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -36,6 +57,12 @@
             target="_blank"
             >Open Trivia DB</a
           >
+          <a
+            class="nav-item nav-link"
+            href="https://github.com/vipulchodankar/js-quiz-app"
+            target="_blank"
+            >GitHub</a
+          >
         </div>
       </div>
     </nav>
@@ -45,11 +72,18 @@
         <div class="col-md-6 p-2 m-2 ">
           <div class="row m-1 mb-4 justify-content-between" id="displayRow">
             <div class="mx-4 mb-2 d-inline-block">
-              <i class="fas fa-question"></i>
-              <span id="questionNumberDisplay">6</span>
+              <i class="fas fa-question fa-lg"></i>
+              <span
+                id="questionNumberDisplay"
+                class="font-weight-bold h4 counter"
+                >6</span
+              >
             </div>
             <div class="mx-4 mb-2 d-inline-block">
-              <i class="fas fa-star"></i> <span id="scoreDisplay">9</span>
+              <span id="scoreDisplay" class="font-weight-bold h4 counter"
+                >9</span
+              >
+              <i class="fas fa-star fa-lg"></i>
             </div>
           </div>
 
@@ -78,13 +112,22 @@
 
       <div class="row justify-content-center" id="bottomButtons">
         <div class="col-md-6 m-1 text-center">
-          <button class="btn btn-sm btn-danger mx-1 my-1" id="resetButton">
+          <button
+            class="btn btn-sm btn-danger mx-1 my-1 font-weight-bold"
+            id="resetButton"
+          >
             <i class="fas fa-recycle"></i> Reset
           </button>
-          <button class="btn btn-sm btn-warning mx-1 my-1" id="passButton">
+          <button
+            class="btn btn-sm btn-warning mx-1 my-1 font-weight-bold"
+            id="passButton"
+          >
             <i class="fas fa-forward"></i> Pass
           </button>
-          <button class="btn btn-sm btn-primary mx-1 my-1" id="submitButton">
+          <button
+            class="btn btn-sm btn-primary mx-1 my-1 font-weight-bold"
+            id="submitButton"
+          >
             <i class="fas fa-check"></i> Submit
           </button>
         </div>
@@ -97,7 +140,7 @@
             id="categorySelect"
             aria-label="Select to choose category."
           >
-            <option selected> Choose Category</option>
+            <option selected> Choose Category (Default: Any)</option>
             <option value="0">Any Category</option>
             <option value="9">General Knowledge</option>
             <option value="10">Books</option>
@@ -134,7 +177,7 @@
             class="input-group form-control bg-dark text-white"
             name="numberOfQuestions"
             id="numberOfQuestionsInput"
-            placeholder=" Enter number of questions."
+            placeholder=" Enter no. of questions (Default: 5)"
           />
         </div>
       </div>
@@ -147,7 +190,7 @@
           id="difficultySelect"
           aria-label="Select to choose difficulty."
         >
-          <option selected> Choose Difficulty</option>
+          <option selected> Choose Difficulty (Default: Any)</option>
           <option value="0">Any Difficulty</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
@@ -177,12 +220,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
-    <!-- <script>
+    <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js");
         });
       }
-    </script> -->
+    </script>
   </body>
 </html>
