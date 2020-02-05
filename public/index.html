@@ -10,7 +10,22 @@
       type="image/png"
     />
     <link rel="manifest" href="manifest.json" />
+    <meta name="description" content="A quiz app made with JavaScript." />
+    <meta name="keywords" content="quiz,app,JavaScript" />
+
+    <!-- IOS -->
+    <meta name="apple-mobile-web-app-title" content="Quiz!" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link
+      href="img/icons/icon-152x152.png"
+      rel="apple-touch-icon"
+      sizes="152x152"
+    />
+
     <title>JS Quiz App</title>
+
+    <!-- Stylesheets -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -42,6 +57,12 @@
             target="_blank"
             >Open Trivia DB</a
           >
+          <a
+            class="nav-item nav-link"
+            href="https://github.com/vipulchodankar/js-quiz-app"
+            target="_blank"
+            >GitHub</a
+          >
         </div>
       </div>
     </nav>
@@ -52,10 +73,17 @@
           <div class="row m-1 mb-4 justify-content-between" id="displayRow">
             <div class="mx-4 mb-2 d-inline-block">
               <i class="fas fa-question fa-lg"></i>
-              <span id="questionNumberDisplay" class="font-weight-bold h4 counter">6</span>
+              <span
+                id="questionNumberDisplay"
+                class="font-weight-bold h4 counter"
+                >6</span
+              >
             </div>
             <div class="mx-4 mb-2 d-inline-block">
-              <span id="scoreDisplay" class="font-weight-bold h4 counter">9</span> <i class="fas fa-star fa-lg"></i>
+              <span id="scoreDisplay" class="font-weight-bold h4 counter"
+                >9</span
+              >
+              <i class="fas fa-star fa-lg"></i>
             </div>
           </div>
 
@@ -84,13 +112,22 @@
 
       <div class="row justify-content-center" id="bottomButtons">
         <div class="col-md-6 m-1 text-center">
-          <button class="btn btn-sm btn-danger mx-1 my-1 font-weight-bold" id="resetButton">
+          <button
+            class="btn btn-sm btn-danger mx-1 my-1 font-weight-bold"
+            id="resetButton"
+          >
             <i class="fas fa-recycle"></i> Reset
           </button>
-          <button class="btn btn-sm btn-warning mx-1 my-1 font-weight-bold" id="passButton">
+          <button
+            class="btn btn-sm btn-warning mx-1 my-1 font-weight-bold"
+            id="passButton"
+          >
             <i class="fas fa-forward"></i> Pass
           </button>
-          <button class="btn btn-sm btn-primary mx-1 my-1 font-weight-bold" id="submitButton">
+          <button
+            class="btn btn-sm btn-primary mx-1 my-1 font-weight-bold"
+            id="submitButton"
+          >
             <i class="fas fa-check"></i> Submit
           </button>
         </div>
