@@ -30,167 +30,116 @@
     <title>JS Quiz App</title>
 
     <!-- Stylesheets -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">JS Quiz App</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <a
-            class="nav-item nav-link"
-            href="https://opentdb.com/"
-            target="_blank"
-            >Open Trivia DB</a
-          >
-          <a
-            class="nav-item nav-link"
-            href="https://github.com/vipulchodankar/js-quiz-app"
-            target="_blank"
-            >GitHub</a
-          >
+    <div class="container-fluid">
+      <!-- Start of .container-fluid -->
+      <div class="" id="displayRow">
+        <div class="topDisplay" id="topDisplayQuestion">
+          <!-- <i class="fas fa-question fa-lg"></i> -->
+          Question #<span id="questionNumberDisplay" class="">6</span>
         </div>
-      </div>
-    </nav>
-
-    <div class="container-fluid m-0  ">
-      <div class="row justify-content-center">
-        <div class="col-md-6 p-2 m-2 ">
-          <div class="row m-1 mb-4 justify-content-between" id="displayRow">
-            <div class="mx-4 mb-2 d-inline-block">
-              <i class="fas fa-question fa-lg"></i>
-              <span
-                id="questionNumberDisplay"
-                class="font-weight-bold h4 counter"
-                >6</span
-              >
-            </div>
-            <div class="mx-4 mb-2 d-inline-block">
-              <span id="scoreDisplay" class="font-weight-bold h4 counter"
-                >9</span
-              >
-              <i class="fas fa-star fa-lg"></i>
-            </div>
-          </div>
-
-          <div class="text-center">
-            <span id="questionDisplay">Question loading...</span>
-          </div>
-
-          <div>
-            <ul id="mcq" class="pl-0">
-              <li class="mcq-options btn btn-secondary d-block m-3">
-                Option 1
-              </li>
-              <li class="mcq-options btn btn-secondary d-block m-3">
-                Option 2
-              </li>
-              <li class="mcq-options btn btn-secondary d-block m-3">
-                Option 3
-              </li>
-              <li class="mcq-options btn btn-secondary d-block m-3">
-                Option 4
-              </li>
-            </ul>
-          </div>
+        <div class="topDisplay" id="topDisplayScore">
+          Score: 
+          <span id="scoreDisplay" class="counter">9</span>
+          <!-- <i class="fas fa-star fa-lg"></i> -->
         </div>
       </div>
 
-      <div class="row justify-content-center" id="bottomButtons">
-        <div class="col-md-6 m-1 text-center">
-          <button
-            class="btn btn-sm btn-danger mx-1 my-1 font-weight-bold"
-            id="resetButton"
-          >
-            <i class="fas fa-recycle"></i> Reset
-          </button>
-          <button
-            class="btn btn-sm btn-warning mx-1 my-1 font-weight-bold"
-            id="passButton"
-          >
-            <i class="fas fa-forward"></i> Pass
-          </button>
-          <button
-            class="btn btn-sm btn-primary mx-1 my-1 font-weight-bold"
-            id="submitButton"
-          >
-            <i class="fas fa-check"></i> Submit
-          </button>
-        </div>
+      <div id="questionDisplay">
+        Question loading...
       </div>
-
-      <div class="row justify-content-center">
-        <div class="text-center col-md-5 col-lg-3 mx-4 mt-3">
-          <select
-            class="custom-select bg-dark text-white"
-            id="categorySelect"
-            aria-label="Select to choose category."
-          >
-            <option selected> Choose Category (Default: Any)</option>
-            <option value="0">Any Category</option>
-            <option value="9">General Knowledge</option>
-            <option value="10">Books</option>
-            <option value="11">Films</option>
-            <option value="12">Music</option>
-            <option value="13">Musicals & Theatres</option>
-            <option value="14">Television</option>
-            <option value="15">Video Games</option>
-            <option value="16">Board Games</option>
-            <option value="17">Science & Nature</option>
-            <option value="18">Computers</option>
-            <option value="19">Mathematics</option>
-            <option value="20">Mythology</option>
-            <option value="21">Sports</option>
-            <option value="22">Geography</option>
-            <option value="23">History</option>
-            <option value="24">Politics</option>
-            <option value="25">Art</option>
-            <option value="26">Celebrities</option>
-            <option value="27">Animals</option>
-            <option value="28">Vehicles</option>
-            <option value="29">Comics</option>
-            <option value="30">Gadgets</option>
-            <option value="31">Anime & Manga</option>
-            <option value="32">Cartoon</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="text-center col-md-5 col-lg-3 mx-4 mt-3">
-          <input
-            type="number"
-            class="input-group form-control bg-dark text-white"
-            name="numberOfQuestions"
-            id="numberOfQuestionsInput"
-            placeholder=" Enter no. of questions (Default: 5)"
-          />
-        </div>
-      </div>
+      <!-- End of .container-fluid -->
     </div>
 
-    <div class="row justify-content-center mx-1">
-      <div class="text-center col-md-5 col-lg-3 mx-4 my-3">
+    <div class="container">
+      <!-- Start of .container -->
+      <ul id="mcq" class="">
+        <!-- Start of MCQ options -->
+        <li class="mcq-options">
+          Option 1
+        </li>
+        <li class="mcq-options">
+          Option 2
+        </li>
+        <li class="mcq-options">
+          Option 3
+        </li>
+        <li class="mcq-options">
+          Option 4
+        </li>
+        <!-- End of MCQ options -->
+      </ul>
+
+      <div class="row justify-content-center" id="bottomButtons">
+        <!-- Start of bottom buttons -->
+        <button class="btn btn-danger" id="resetButton">
+          <i class="fas fa-recycle"></i> Reset
+        </button>
+        <button class="btn btn-warning" id="passButton">
+          <i class="fas fa-forward"></i> Pass
+        </button>
+        <button class="btn btn-primary" id="submitButton">
+          <i class="fas fa-check"></i> Submit
+        </button>
+        <!-- End of bottom buttons -->
+      </div>
+
+      <div class="settings">
+        <!-- Start of category input -->
         <select
-          class="custom-select bg-dark text-white"
+          class=""
+          id="categorySelect"
+          aria-label="Select to choose category."
+        >
+          <option selected> Choose Category (Default: Any)</option>
+          <option value="0">Any Category</option>
+          <option value="9">General Knowledge</option>
+          <option value="10">Books</option>
+          <option value="11">Films</option>
+          <option value="12">Music</option>
+          <option value="13">Musicals & Theatres</option>
+          <option value="14">Television</option>
+          <option value="15">Video Games</option>
+          <option value="16">Board Games</option>
+          <option value="17">Science & Nature</option>
+          <option value="18">Computers</option>
+          <option value="19">Mathematics</option>
+          <option value="20">Mythology</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="24">Politics</option>
+          <option value="25">Art</option>
+          <option value="26">Celebrities</option>
+          <option value="27">Animals</option>
+          <option value="28">Vehicles</option>
+          <option value="29">Comics</option>
+          <option value="30">Gadgets</option>
+          <option value="31">Anime & Manga</option>
+          <option value="32">Cartoon</option>
+        </select>
+        <!-- End of category input -->
+      </div>
+
+      <div class="settings">
+        <!-- Start of number of questions input -->
+        <input
+          type="number"
+          class=""
+          name="numberOfQuestions"
+          id="numberOfQuestionsInput"
+          placeholder=" Enter no. of questions (Default: 5)"
+        />
+        <!-- End of number of questions input -->
+      </div>
+
+      <div class="settings">
+        <!-- Start of difficulty select -->
+        <select
+          class=""
           id="difficultySelect"
           aria-label="Select to choose difficulty."
         >
@@ -200,24 +149,11 @@
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
+        <!-- End of difficulty select -->
       </div>
+      <!-- End of .container -->
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js"
       integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk="
