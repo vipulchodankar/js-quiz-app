@@ -1,30 +1,139 @@
-body {
-  background: #232526; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #414345,
-    #232526
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #414345,
-    #232526
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: #fff;
-
-  font-size: 16px;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.counter{
-  font-size: 1.375rem;
-  line-height: 0;
+body {
+  background: #212121; /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(
+    to right,
+    #424242,
+    #212121
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(
+    to right,
+    #424242,
+    #212121
+  ); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+.topDisplay {
+  display: inline-block;
+  padding: 15px;
+  width: 20%;
+  font-weight: 600;
+}
+
+.container-fluid {
+  background: #fff;
+  color: #212121;
+}
+
+#displayRow{
+  background: #212121;
+  color: #fff;
+}
+
+.container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+#questionDisplay {
+  padding: 10px;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.mcq-options {
+  width: fit-content;
+  width: 80%;
+  margin: 10px;
+  padding: 10px 5px 10px 5px;
+  background: #303030;
+  border-left: #fff 5px solid;
+}
+
+.btn:hover, .mcq-options:hover{
+  opacity: 75%;
 }
 
 #mcq li {
   list-style: none;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
-/* .selected {
-    
-} */
+ul {
+  padding: 0 auto;
+  
+}
+
+.d-none {
+  display: none;
+}
+
+.btn {
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 5%;
+  padding: 8px;
+  margin: 15px 5px 5px 10px;
+  box-shadow: 2px 2px #212121;
+  width: 85px;
+  outline: none;
+}
+
+.btn-warning {
+  background: orange;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-danger {
+  background: red;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-secondary {
+  background: #303030;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-primary, .btn-info {
+  background: #0069FF;
+  transition: all 0.5s ease-in-out;
+}
+
+.settings {
+  margin: 10px 5px;
+}
+
+select, input {
+  width: 55%;
+  border: none;
+  padding: 5px 0px 5px 0px;
+  background: #303030;
+  color: #fff;
+  outline: none;
+}
+
+@media only screen and (max-width: 600px) { 
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  select, input {
+    width: 85%;
+  }
+
+  .topDisplay {
+    width: 40%;
+  }
+}
